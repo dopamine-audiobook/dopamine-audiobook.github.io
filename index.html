@@ -26,10 +26,10 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<div class="text-center">
-	<h2>Dopamine Audiobook: A Training-free MLLM Agent for Emotional and Human-like Audiobook Generation</h2>
+	<h2>Dopamine Audiobook: A Training-free MLLM Agent for Emotional and Immersive Audiobook Generation</h2>
 
       	[<a href="">Paper</a>]
-	[<a href="">Code</a>]
+		[<a href="">Code</a>]
 
         <p class="fst-italic mb-0">
 		<br>
@@ -38,8 +38,8 @@
 	</div>
 	
 	<p><b>Abstract:</b>
-	Audiobook generation, which creates vivid and emotion-rich audio works, faces challenges in conveying complex emotions, achieving human-like qualities, and aligning evaluations with human preferences. Existing text-to-speech (TTS) methods are often limited to specific scenarios, struggle with emotional transitions, and lack automatic human-aligned evaluation benchmarks, instead relying on either misaligned automated metrics or costly human assessments. To address these issues, we propose <b>Dopamine Audiobook</b>, a new unified training-free system leveraging a multimodal large language model (MLLM) as an <b>AI agent</b> for emotional and human-like audiobook generation and evaluation. Specifically, we first design a <b>flow-based emotion-enhanced framework</b> that decomposes complex emotional speech synthesis into controllable sub-tasks. Then, we propose an adaptive model selection module that dynamically selects the most suitable TTS methods from a set of existing state-of-the-art (SOTA) TTS methods for diverse scenarios. We further enhance emotional expressiveness through paralinguistic augmentation and prosody retrieval at word and utterance levels. For evaluation, we propose a novel <b>MLLM-based evaluation framework</b> incorporating self-critique, perspective-taking, and psychological MagicEmo prompts to ensure human-aligned and self-aligned assessments. Experiments show that our method generates long speech with superior emotional expression to SOTA TTS models in various metrics. Importantly, our evaluation framework demonstrates better alignment with human preferences and transferability across audio tasks.
-	
+	Audiobook generation aims to create rich, immersive listening experiences from multimodal inputs, but current approaches face three critical challenges: (1) the lack of synergistic generation of diverse audio types (e.g., speech, sound effects, and music) with precise temporal and semantic alignment; (2) the difficulty in conveying expressive, fine-grained emotions, which often results in machine-like vocal outputs; and (3) the absence of automated evaluation frameworks that align with human preferences for complex and diverse audio. To address these issues, we propose <b>Dopamine Audiobook</b>, a novel unified training-free multi-agent system, where a multimodal large language model (MLLM) serves two specialized roles (i.e., speech designer and audio designer) for emotional, human-like, and immersive audiobook generation and evaluation. Specifically, we firstly propose a flow-based, context-aware framework for diverse audio generation with word-level semantic and temporal alignment. To enhance expressiveness, we then design word-level paralinguistic augmentation, utterance-level prosody retrieval, and adaptive TTS model selection. Finally, for evaluation, we introduce a novel MLLM-based evaluation framework incorporating self-critique, perspective-taking, and psychological MagicEmo prompts to ensure human-aligned and self-aligned assessments. Experimental results demonstrate that our method achieves state-of-the-art (SOTA) performance on multiple metrics. Importantly, our evaluation framework shows better alignment with human preferences and transferability across audio tasks.
+		
 	<p><b>Generation Framework</b></p>
 	<p style="text-align: center;">
 		<img src="network/generation.png" height="400" width="1024">
@@ -53,117 +53,336 @@
 		<img src="network/MagicEmo.png" height="400" width="1024">
 	</p>
 
+	<p>
+		<b>Experiment (Demo)</b>
+        <ul>
+      	<li><a href="#ImageInput">Image-Input Audiobook Generation</a>
+		<li><a href="#TextInput">Text-Input Audiobook Generation</a>
+		<li><a href="#MultipleImageInput">Multiple-Images-Input Audiobook Generation</a>
+		</ul>
+	</p>
+	
 </div>
 
-<!------ Application -------------------------->
+
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="GenerationSamples" style="text-align: center;">Dopamine Audiobook Samples</h2>
-	<p>
-	<b>1. Single image input</b>
-	</p>
-
+	<h2 id="ImageInput" style="text-align: center;">Image-Input Audiobook Generation</h2>
+	<p> </p>
 		<div class="table-responsive pt-3">
-			<table class="table table-hover pt-2">
-				<table align = "center"  style="text-align: center;">
-					<tr>
-						<td style="text-align: center;">Input Image</td>
-						<td style="width: 66.66%; text-align: center; padding-left: 20px;">Generated Story Script</td>
-					</tr>
-					<tr>
-					    <td style="width: 33.33%; text-align: center; vertical-align: middle;">
-						    <img src="resources/monkey/monkey.png" width="150" height="150" style="margin-right: 15px;">
-					    </td>
-					    <td style="width: 66.66%; text-align: left; padding-left: 20px;">
-						<p></p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Narrator]: 在一个明媚的下午，小猴子乔治和小狗雷克斯在街头偶遇，似乎展开了一场别开生面的对话。</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[George]: 哈哈哈，雷克斯，你的耳朵今天看起来格外飘逸！</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Rex]: 哈哈，谢谢夸奖，乔治！你的笑容还是那么有感染力。今天准备去哪里冒险？</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[George]: 我正打算去找点好吃的香蕉，你呢？难道是去追邮递员叔叔的车？</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Rex]: 才没有呢！我可是有更高级的任务——我在研究城市里的“好闻味道地图”。</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[George]: "好闻味道地图”？这听起来很酷！能教教我吗？</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Rex]: 很简单！闭上眼睛，用鼻子嗅嗅，哪里有烤香肠的味道，哪里就有快乐！</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[George]: 哦！我好像闻到……嗯……垃圾桶？</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Rex]: 哎呀，乔治，垃圾桶不在“好闻”范围内！不过你的鼻子倒是很灵敏！</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[George]: 哈哈哈，那还是交给你这个专家吧！不过别忘了，有好吃的记得叫上我！</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Rex]: 没问题！一起探索世界的味道吧！</p>
-					        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Narrator]: 于是，两个好朋友带着笑声，沿着街道一路跑跑跳跳，开始了他们独特的味道探险之旅。这场街头偶遇，为他们平凡的下午增添了不少温暖和乐趣。</p>
-						<p></p>
-					    </td>
-					</tr>
-				
-				</table>
-				<p></p>
-				<table align = "center" style="text-align: center;">
-			            <tr>
-			                <td style="text-align: center;">E2-TTS</td>
-			                <td style="text-align: center;">F5-TTS</td>
-			                <td style="text-align: center;">CosyVoice 2</td>
-					<td style="text-align: center;">VoxInstruct</td>
-			                <td style="text-align: center;">FireRedTTS</td>
-					<td style="text-align: center;">Ours</td>
-					<td style="text-align: center;">Ours (English)</td>
-			            </tr>
-			
-			            <tr>
-				        <td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/e2tts_monkey.wav" type="audio/wav"></audio></td>
-				        <td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/f5tts_monkey.wav"  type="audio/wav"></audio></td>
-				        <td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/cosy2_monkey.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/vox_monkey.wav" type="audio/wav"></audio></td>
-				        <td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/fire_monkey.wav"  type="audio/wav"></audio></td>
-				        <td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/ours_monkey.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 170px; height: 70px;'><source src="resources/monkey/final_story_emotion2.wav" type="audio/wav"></audio></td>
-			            </tr>
-			        </table>
-				
-			</table>
+			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">Input Image</th>
+					<th style="vertical-align : middle;text-align: center">Ours (w/o audio designer)</th>
+					<th style="vertical-align : middle;text-align: center">Ours</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/candle.png" alt="" width="200"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/candle_final_story.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/candle_mixed_audio.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/emergency.png" alt="" width="200"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/emergency_story_emotion.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/emergency_mixed_audio.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/monkey.png" alt="" width="200"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/monkey_final_story_emotion_results.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/monkey_mixed_audio.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/libai.png" alt="" width="200"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/ours_libai_notext.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/libai_notext_noambiance_mixed_audio.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+				</tr>
+			</tbody>
+		</table>
 		</div>
-	<p>
-	<p></p>
-	<p></p>
-	<hr style="border: 1px solid #ccc; margin: 0;">
-	<p></p>
-	<p></p>
-	<b>2. Single image input</b>
-	</p>
+	<br><br>
+        	<h4 id="emo" style="text-align: center;">Spotlight</h4>
+	<br>
 
 		<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">
-				<table align = "center"  style="text-align: center;">
+				<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">Input</th>
+					<th style="vertical-align : middle;text-align: center">Content</th>
+					<th style="vertical-align : middle;text-align: center">Ours</th>
+					<th style="vertical-align : middle;text-align: center">Ours (w/o AD)</th>
+					<th style="vertical-align : middle;text-align: center">F5-TTS</th>
+					<th style="vertical-align : middle;text-align: center">FireRedTTS</th>
+					<th style="vertical-align : middle;text-align: center">MaskGCT</th>
+					<th style="vertical-align : middle;text-align: center">Vevo</th>
+					<th style="vertical-align : middle;text-align: center">VoxInstruct</th>
+				</tr>
+				</thead>
+				<tbody>
 					<tr>
-						<td style="text-align: center;">Input Image</td>
-						<td style="width: 66.66%; text-align: center; padding-left: 20px;">Generated Story Script</td>
-						<td style="text-align: center;">Ours Result</td>
-					</tr>
-					<tr>
-						<td style="width: 33.33%; text-align: center; vertical-align: middle;">
-						    <img src="resources/emergency/emergency.png" width="180" height="180" style="margin-right: 15px;">
-						   
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/candle.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">艾拉从抽屉里拿出了一支蜡烛和一盒火柴。在漆黑中，她小心翼翼地划亮了一根火柴。</p>
 						</td>
-						<td style="width: 66.66%; text-align: left; padding-left: 20px;">
-							<p></p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Broadcast]: Attention all citizens: Toxic gas leak at the East Chemical Plant. Evacuate immediately and wear a gas mask!</p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Officer]: The night might be dark! But I will protect this city!</p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Reporter]: As a reporter, I can’t back down. There’s a truth I must uncover.</p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Officer]: Lesson, this is a life-or-death situation. We need everyone out now. You can investigate once we’re all clear.</p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Reporter]: I understand the danger. But if nobody tells the story, how will we prevent this from happening again?</p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Officer]: Alright. I’ll get you inside the command center, but you stay close. I won’t let you—or this city down.</p>
-						        <p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">[Broadcast]: Evacuation in progress. All emergency routes are open. Remain calm and cooperate with authorities.</p>
-							<p></p>
-					    	</td>
-						<td><audio controls="" style='display: inline-block; padding:8px; width: 220px; height: 70px;'><source src="resources/emergency/emergency_story_emotion.wav" type="audio/wav"></audio></td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/candle_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
 					</tr>
-				
-				</table>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/candle.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">希望？就像这个小小的光吗？</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/candle_Lily_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/candle.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">对，莉莉。只要有它在，我们就不怕黑。今晚，我们就让这个小小的光，陪我们一起讲故事，好不好？</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/candle_Elara_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/candle.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">突如其来的黑暗吞噬了整个房间，窗外狂风呼啸，暴雨倾盆。</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/candle_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/emergency.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Evacuation in progress. All emergency routes are open. Remain calm and cooperate with authorities.</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/emergency_Emergency_Broadcast_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/monkey.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Faster, Otis, faster! That rope swing was fun, but my stomach is rumbling for a morning donut!</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/monkey_Milo_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/monkey.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">What is it, Milo? Is the shop closed? Did they run out of the sprinkled kind?</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/monkey_Otis_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/monkey.png" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Swinging high, Milo paused, his wide eyes fixed on a new sight down the street. A small, tearful girl sat alone on a bench, a broken toy car in her hands.</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/monkey_Narrator_02.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
-	<p>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="TextInput" style="text-align: center;">Text-Input Audiobook Generation</h2>
+	<p> </p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">Input Text</th>
+					<th style="vertical-align : middle;text-align: center">Ours (w/o audio designer)</th>
+					<th style="vertical-align : middle;text-align: center">Ours</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center;">
+						<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">李白有感而发，作诗《将进酒》</p>
+						<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Li Bai, a Chinese poet of the Tang era, was inspired to write the poem "Qiang Jin Jiu" (Bring in the Wine).</p>
+					</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/libai_ours.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/libai_jjj_noambiance_mixed_audio.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center;">
+						<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">一位母亲在孩子睡前读诗《将进酒》</p>
+						<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Before putting her child to sleep, a mother reads them the classic Chinese poem "Qiang Jin Jiu."</p>
+					</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/liuli_ours.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 280px;"><source src="resources/demo/mother_jjj_noambiance_mixed_audio.mp3" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	<br><br>
+        	<h4 id="emo" style="text-align: center;">Spotlight</h4>
+	<br>
+
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">Input</th>
+					<th style="vertical-align : middle;text-align: center">Content</th>
+					<th style="vertical-align : middle;text-align: center">Ours</th>
+					<th style="vertical-align : middle;text-align: center">Ours (w/o AD)</th>
+					<th style="vertical-align : middle;text-align: center">F5-TTS</th>
+					<th style="vertical-align : middle;text-align: center">FireRedTTS</th>
+					<th style="vertical-align : middle;text-align: center">MaskGCT</th>
+					<th style="vertical-align : middle;text-align: center">Vevo</th>
+					<th style="vertical-align : middle;text-align: center">VoxInstruct</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Li Bai, a Chinese poet of the Tang era, was inspired to write the poem "Qiang Jin Jiu" </p>
+						</td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">天生我材必有用，千金散尽还复来。</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/libai_jjj_LiBai_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Li Bai, a Chinese poet of the Tang era, was inspired to write the poem "Qiang Jin Jiu" </p>
+						</td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">烹羊宰牛且为乐，会须一饮三百杯。</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/libai_jjj_LiBai_05.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Li Bai, a Chinese poet of the Tang era, was inspired to write the poem "Qiang Jin Jiu" </p>
+						</td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">五花马，千金裘，呼儿将出换美酒，与尔同销万古愁！</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/libai_jjj_LiBai_12.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Before putting her child to sleep, a mother reads them the classic Chinese poem "Qiang Jin Jiu."</p>
+						</td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">人生得意须尽欢，莫使金樽空对月。</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/liuli_jjj_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/liuli_jjj_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/liuli_jjj_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/liuli_jjj_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/liuli_jjj_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/liuli_jjj_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/vox_mother_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Before putting her child to sleep, a mother reads them the classic Chinese poem "Qiang Jin Jiu."</p>
+						</td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">天生我材必有用，千金散尽还复来。</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/liuli_jjj_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/liuli_jjj_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/liuli_jjj_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/liuli_jjj_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/liuli_jjj_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/liuli_jjj_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/vox_mother_04.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Before putting her child to sleep, a mother reads them the classic Chinese poem "Qiang Jin Jiu."</p>
+						</td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">岑夫子，丹丘生，将进酒，杯莫停。</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/liuli_jjj_mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/liuli_jjj_mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/liuli_jjj_mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/liuli_jjj_mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/liuli_jjj_mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/liuli_jjj_mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/mother_06.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>
+
+	
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="MultipleImageInput" style="text-align: center;">Multiple-Images-Input Audiobook Generation</h2>
 	<p></p>
-	<p></p>
-	<hr style="border: 1px solid #ccc; margin: 0;">
-	<p></p>
-	<p></p>
-	<b>3. Multiple consecutive image frames input</b>
-	</p>
 	<div class="table-responsive pt-3">
 		<table class="table table-hover pt-2">
 			<table align = "center"  style="text-align: center;">
@@ -171,25 +390,30 @@
 					<td colspan="7" style="text-align: center;">Input Image Sequences</td>
 				</tr>
 				<tr>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_1.jpg" alt="" width="180"><br></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_2.jpg" alt="" width="180"><br></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_3.jpg" alt="" width="180"><br></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_4.jpg" alt="" width="180"><br></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_5.jpg" alt="" width="180"><br></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_6.jpg" alt="" width="180"><br></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="resources/video/rabbit_7.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_1.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_2.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_3.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_4.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_5.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_6.jpg" alt="" width="180"><br></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_7.jpg" alt="" width="180"><br></td>
 				</tr>
 			
 			</table>
 			<p></p>
 			<table align="center" style="text-align: center;">
 			    <tr>
-					<td colspan="6" style="text-align: center;">Generated Result (displayed in the video)</td>
+					<td colspan="6" style="text-align: center;">Ours (w/o audio designer)</td>
+					<td colspan="6" style="text-align: center;">Ours</td>
 			    </tr>
 			    <tr>
 			        <td>
-			            <video width="640" height="420" controls>
-			                <source src="resources/video/rabbit.mp4" type="video/mp4">
+			            <video width="500" controls>
+			                <source src="resources/demo/rabbit_speech.mp4" type="video/mp4">
+			                Your browser does not support the video tag.
+			            </video>
+						<video width="500" controls>
+			                <source src="resources/demo/rabbit_mixed.mp4" type="video/mp4">
 			                Your browser does not support the video tag.
 			            </video>
 			        </td>
@@ -197,215 +421,80 @@
 			</table>
 		</table>
 	</div>
-</div>
+	<br><br>
+        	<h4 id="emo" style="text-align: center;">Spotlight</h4>
+	<br>
 
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="different_text" style="text-align: center;">Results with Different Text Instructions</h2>
-	<div class="table-responsive pt-3">
-		<table class="table table-hover pt-2">
-			<table align = "center"  style="text-align: center;">
-				<tr>
-					<td style="text-align: center;">Input Image</td>
-					<td style="text-align: center;"></td>
-				</tr>
-				<tr>
-					<td style="width: 50%; text-align: center; vertical-align: middle;">
-						<img src="resources/libai_jiangjinjiu/libai.png" width="150" height="150" style="margin-right: 15px">
-					</td>
-					<td style="width: 50%; text-align: left; padding-left: 20px;">
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">《将进酒》</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">君不见，黄河之水天上来，奔流到海不复回。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">君不见，高堂明镜悲白发，朝如青丝暮成雪。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">人生得意须尽欢，莫使金樽空对月。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">天生我材必有用，千金散尽还复来。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">烹羊宰牛且为乐，会须一饮三百杯。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">岑夫子，丹丘生，将进酒，杯莫停。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">与君歌一曲，请君为我倾耳听！</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">钟鼓馔玉不足贵，但愿长醉不复醒。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">古来圣贤皆寂寞，惟有饮者留其名。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">陈王昔时宴平乐，斗酒十千恣欢谑。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">主人何为言少钱，径须沽取对君酌。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">五花马，千金裘，呼儿将出换美酒，与尔同销万古愁！</p>
-					</td>
-				</tr>
-			</table>
-			<p></p>
-			<p></p>
-			<p>
-			<b>Instruction 1: Li Bai was inspired and wrote the poem "Invitation to Wine."</b>
-			</p>
-			<p>(Note: "Invitation to Wine" is a famous Chinese classical poem written by the poet Li Bai.)</p>
-			<table align = "center" style="text-align: center;">
-			    <tr>
-				<td style="text-align: center;">E2-TTS</td>
-				<td style="text-align: center;">F5-TTS</td>
-				<td style="text-align: center;">CosyVoice 2</td>
-				<td style="text-align: center;">VoxInstruct</td>
-				<td style="text-align: center;">FireRedTTS</td>
-				<td style="text-align: center;">Ours</td>
-			    </tr>
-		
-			    <tr>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_jiangjinjiu/E2-TTS_libai.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_jiangjinjiu/libai_f5tts.wav"  type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_jiangjinjiu/libai_cosyvoice2zeroshot.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_jiangjinjiu/libai_vox.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_jiangjinjiu/libai_fire.wav"  type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_jiangjinjiu/libai_ours.wav" type="audio/wav"></audio></td>
-			    </tr>
-			</table>
-			
-			<p></p>
-			<p></p>
-			<p>
-				<b>Instruction 2: A mother reads "Invitation to Wine" to her child before bed to help them fall asleep.</b>
-			</p>
-			<table align = "center" style="text-align: center;">
-			    <tr>
-				<td style="text-align: center;">E2-TTS</td>
-				<td style="text-align: center;">F5-TTS</td>
-				<td style="text-align: center;">CosyVoice 2</td>
-				<td style="text-align: center;">VoxInstruct</td>
-				<td style="text-align: center;">FireRedTTS</td>
-				<td style="text-align: center;">Ours</td>
-			    </tr>
-		
-			    <tr>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/liuli_jiangjinjiu/E2-TTS_liuli.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/liuli_jiangjinjiu/liuli_f5-tts.wav"  type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/liuli_jiangjinjiu/liuli_cosyvoice2_zeroshot.wav" type="audio/wav"></audio></td>
-				<td><span style="display: inline-block; width: 200px; height: 70px; text-align: center; line-height: 70px;">- fail -</span></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/liuli_jiangjinjiu/liuli_firered.wav"  type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/liuli_jiangjinjiu/liuli_ours.wav" type="audio/wav"></audio></td>
-			    </tr>
-			</table>
-			<p></p>
-			<p></p>
-			<hr style="border: 1px solid #ccc; margin: 0;">
-			<p></p>
-			<p></p>
-			<table align = "center"  style="text-align: center;">
-				<tr>
-					<td style="text-align: center;">Input Image</td>
-					<td style="text-align: center;">Generated Script</td>
-					
-				</tr>
-				<tr>
-					<td style="width: 50%; text-align: center; vertical-align: middle;">
-						<img src="resources/libai_jiangjinjiu/libai.png" width="150" height="150" style="margin-right: 15px">
-					</td>
-					<td style="width: 50%; text-align: left; padding-left: 20px;">
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">松影横斜客衣寒，红瓢在手醉吟欢。</p>
-						<p style="text-align: left; margin-bottom: 5px; line-height: 1.4;">世尘莫问风波事，一枕清梦寄云端。</p>
-					</td>
-				</tr>
-			</table>
-			<p></p>
-			<p></p>
-			<p>
-				<b>Instruction 3: No text input, only image input.</b>
-			</p>
-			<p>(Note: This poem was created by MLLM based on the input image.)</p>
-			<table align = "center" style="text-align: center;">
-			    <tr>
-				<td style="text-align: center;">E2-TTS</td>
-				<td style="text-align: center;">F5-TTS</td>
-				<td style="text-align: center;">CosyVoice 2</td>
-				<td style="text-align: center;">VoxInstruct</td>
-				<td style="text-align: center;">FireRedTTS</td>
-				<td style="text-align: center;">Ours</td>
-			    </tr>
-		
-			    <tr>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_notext/E2-TTS_libai_notext.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_notext/F5-TTS_libai_notext.wav"  type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_notext/cosy2instruction_libai_notext.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_notext/vox_libai_notext.wav" type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_notext/fire_libai_notext.wav"  type="audio/wav"></audio></td>
-				<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/libai_notext/ours_libai_notext.wav" type="audio/wav"></audio></td>
-			    </tr>
-			</table>
-					
-			
-		</table>
-	</div>
-</div>
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="TextVC" style="text-align: center;">Emotional Zero-shot Text-to-Speech Generation</h2>
-	<p> </p>
 		<div class="table-responsive pt-3">
-			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
-			<thead>
+			<table class="table table-hover pt-2">
+				<thead>
 				<tr>
-					<th style="vertical-align : middle;text-align: center">Reference Speech</th>
-					<th style="vertical-align : middle;text-align: center">Text</th>
-					<th style="vertical-align : middle;text-align: center">E2-TTS</th>
-					<th style="vertical-align : middle;text-align: center">F5-TTS</th>
-					<th style="vertical-align : middle;text-align: center">VoxInstruct</th>
+					<th style="vertical-align : middle;text-align: center">Input</th>
+					<th style="vertical-align : middle;text-align: center">Content</th>
 					<th style="vertical-align : middle;text-align: center">Ours</th>
+					<th style="vertical-align : middle;text-align: center">Ours (w/o AD)</th>
+					<th style="vertical-align : middle;text-align: center">F5-TTS</th>
+					<th style="vertical-align : middle;text-align: center">FireRedTTS</th>
+					<th style="vertical-align : middle;text-align: center">MaskGCT</th>
+					<th style="vertical-align : middle;text-align: center">Vevo</th>
+					<th style="vertical-align : middle;text-align: center">VoxInstruct</th>
 				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/1/zh_prompt.wav" type="audio/wav"></audio></td>
-					<td>你今天看起来真棒！不过，我真的很担心你昨晚没休息好。</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/1/1_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/1/1_F2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/1/1_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/1/ours_1.wav" type="audio/wav"></audio></td>
-				</tr>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/2/01000359.wav" type="audio/wav"></audio></td>
-					<td>我们终于完成了！但接下来的任务肯定会更难。</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/2/2_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/2/2_F5TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/2/2_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/2/ours_2.wav" type="audio/wav"></audio></td>
-				</tr>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/4/4_prompt.mp3" type="audio/wav"></audio></td>
-					<td>今天的面试真是太顺利了！但我担心他们可能会选择更有经验的候选人。</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/4/4_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/4/4_F5TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/4/4_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/4/ours_4_1.wav" type="audio/wav"></audio></td>
-				</tr>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/8/POD0000008941_S0000476.wav" type="audio/wav"></audio></td>
-					<td>I just got accepted into my dream university! But now I’m worried about the tuition fees and scholarships.</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/8/8_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/8/8_F5TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/8/8_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/8/ours_8.wav" type="audio/wav"></audio></td>
-				</tr>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/9/AUD0000001148_S0000872.wav" type="audio/wav"></audio></td>
-					<td>We won the championship game! However, our star player got injured and might miss the next season.</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/9/9_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/9/9_F5TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/9/9_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/9/ours_9.wav" type="audio/wav"></audio></td>
-				</tr>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/12/yue.mp3" type="audio/wav"></audio></td>
-					<td>(Cantonese) 今个面试真係好顺，感觉自己表现唔错！不过，唔知道佢哋会唔会选择啲更有经验嘅人。</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/12/12_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/12/12_F5TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/12/12_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/12/ours_12.wav" type="audio/wav"></audio></td>
-				</tr>
-				<tr>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 180px; height: 70px;'><source src="resources/13/0009_000702.wav" type="audio/wav"></audio></td>
-					<td>(Shanghainese) 今天真的是一天的好运气，事情进展得太顺利了！可是，阿拉总是怕后头来个大波折。</td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/13/13_E2TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/13/13_F5TTS.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/13/13_vox.wav" type="audio/wav"></audio></td>
-					<td><audio controls="" style='display: inline-block; padding:8px; width: 200px; height: 70px;'><source src="resources/13/ours_13.wav" type="audio/wav"></audio></td>
-				</tr>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_1.jpg" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">The sun bathed the park in a warm, golden light as birds chirped a cheerful tune from the treetops. A gentle breeze rustled through the leaves, creating a perfect picture of tranquility.</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/rabbit_Narrator_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_2.jpg" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">Bwaah... must... unclog... the sun...</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/rabbit_Remy_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_5.jpg" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">It's obvious! He's lost his favorite plunger! Quick, to the rescue!</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/rabbit_Stu_01.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><img src="resources/pic/rabbit_7.jpg" alt="" width="120"><br></td>
+						<td style="vertical-align: middle; text-align: center;">
+							<p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.5;">That fly has bwaah'd its last bwaah. This is no longer about a nap. This is about vengeance.</p>
+						</td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_mixed/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/ours_speech/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/F5-TTS/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/FireRedTTS/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/MaskGCT/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/Vevo/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+						<td style="vertical-align: middle; text-align:center;"><audio controls="controls" style="width: 110px;"><source src="resources/VoxInstruct/rabbit_Remy_03.wav" autoplay/>Your browser does not support the audio element.</audio><br> </td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 </div>
 
